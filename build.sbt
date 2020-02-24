@@ -1,14 +1,12 @@
-import Dependencies._
+name := "learn-scala"
+version := "0.1.0-SNAPSHOT"
+// scalaVersion := "2.12.8"
+scalaVersion := "2.11.8"
+organization := "org.nexus"
 
-ThisBuild / scalaVersion     := "2.13.1"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
-ThisBuild / organizationName := "example"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 
-lazy val root = (project in file("."))
-  .settings(
-    name := "learn-scala",
-    libraryDependencies += scalaTest % Test
-  )
+libraryDependencies += scalaTest % Test
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+//https://medium.com/airframe/airframe-log-a-modern-logging-library-for-scala-56fbc2f950bc
+libraryDependencies += "org.wvlet.airframe" %% "airframe-log" % "19.7.3"

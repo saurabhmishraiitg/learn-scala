@@ -1,4 +1,4 @@
-package org.nexus.scala.general
+package org.nexus.udemy
 
 import java.sql.Timestamp
 

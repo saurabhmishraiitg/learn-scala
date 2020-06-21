@@ -1,4 +1,4 @@
-package org.nexus.scala.udemy
+package org.nexus.udemy
 
 /**
   *

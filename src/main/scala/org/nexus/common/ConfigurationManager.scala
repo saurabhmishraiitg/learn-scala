@@ -1,4 +1,4 @@
-package org.nexus.scala.general
+package org.nexus.common
 
 import java.io.FileReader
 import java.nio.file.{Files, Paths}

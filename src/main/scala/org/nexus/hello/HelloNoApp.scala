@@ -1,4 +1,4 @@
-package org.nexus.scala.hello
+package org.nexus.hello
 
 object HelloNoApp {
 

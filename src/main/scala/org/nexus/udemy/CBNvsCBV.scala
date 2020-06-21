@@ -1,4 +1,4 @@
-package org.nexus.scala.udemy
+package org.nexus.udemy
 
 object CBNvsCBV extends App {
 

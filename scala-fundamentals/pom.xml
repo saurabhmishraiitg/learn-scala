@@ -13,6 +13,8 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
     <scala.version>2.11.8</scala.version>
+    <scalatest.version>3.2.0</scalatest.version>
+    <scala.compat.version>2.11</scala.compat.version>
   </properties>
 
   <dependencies>
@@ -30,10 +32,26 @@
     </dependency>
 
     <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_${scala.compat.version}</artifactId>
+      <version>${scalatest.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.lihaoyi/os-lib -->
+    <dependency>
+      <groupId>com.lihaoyi</groupId>
+      <artifactId>os-lib_${scala.compat.version}</artifactId>
+      <version>0.2.9</version>
+    </dependency>
+
 
     <!-- https://medium.com/airframe/airframe-log-a-modern-logging-library-for-scala-56fbc2f950bc -->
     <!-- https://mvnrepository.com/artifact/org.wvlet.airframe/airframe-log -->

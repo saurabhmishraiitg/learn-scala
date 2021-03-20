@@ -20,6 +20,7 @@
     <modules>
         <module>scala-conf-loader</module>
         <module>scala-fundamentals</module>
+        <module>scala-unit-testing</module>
     </modules>
 
     <dependencies>

@@ -1,0 +1,25 @@
+<configuration>
+    <!-- Stop output INFO at start -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %line - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/tmp/sect-shop.log</file>
+
+        <encoder>
+            <pattern>%level %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.apache" level="WARN" />
+    <logger name="org.spark_project" level="WARN" />
+
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>

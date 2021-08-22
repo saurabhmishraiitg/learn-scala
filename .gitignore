@@ -1,9 +1,0 @@
-*.class
-*.log
-target/*
-/project/target/*
-/project/project/*
-.idea/*
-*.iml
-*/target
-metastore_db

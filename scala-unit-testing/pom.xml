@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.walmart.dsi.gg</groupId>
+    <artifactId>scala-unit-testing</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>scala-unit-testing</name>
+    <inceptionYear>2020</inceptionYear>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.scala.version>4.3.1</maven.scala.version>
+        <scala.compat.version>2.11</scala.compat.version>
+        <maven.assembly.version>3.3.0</maven.assembly.version>
+        <scalatest.maven.plugin>1.0</scalatest.maven.plugin>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <scala.version>2.11.7</scala.version>
+        <scalatest.version>3.2.0</scalatest.version>
+        <scala.logging.version>3.9.2</scala.logging.version>
+        <logback.classic.version>1.2.3</logback.classic.version>
+
+        <!-- Code Coverage Dependencies -->
+        <jacoco.plugin.version>0.8.5</jacoco.plugin.version>
+        <maven.sonar.plugin.version>3.7.0.1746</maven.sonar.plugin.version>
+
+        <sonar.host.url>http://sonar.wal-mart.com</sonar.host.url>
+
+<!--        <jacoco.execution.file>target/jacoco.exec</jacoco.execution.file>--> <!-- DEFAULT -->
+        <sonar.coverage.jacoco.xmlReportsPath>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportsPath>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.language>scala</sonar.language>
+        <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
+        <sonar.scala.version>${scala.version}</sonar.scala.version>
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.sources>src/main/scala</sonar.sources>
+        <sonar.tests>src/test/scala</sonar.tests>
+        <sonar.binaries>target/classes</sonar.binaries>
+    </properties>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.compat.version}</artifactId>
+            <version>${scalatest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- To Leverage scala-logging successfully in your project -->
+        <!-- https://stackoverflow.com/questions/29065603/complete-scala-logging-example/32003907#32003907 -->
+        <!-- https://mvnrepository.com/artifact/com.typesafe.scala-logging/scala-logging -->
+        <dependency>
+            <groupId>com.typesafe.scala-logging</groupId>
+            <artifactId>scala-logging_${scala.compat.version}</artifactId>
+            <version>${scala.logging.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.classic.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>scala-unit-testing</finalName>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+
+        <plugins>
+
+            <!-- Generates the coverage report for uploading to sonar-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
+                <configuration>
+<!--                    <destFile>${jacoco.execution.file}</destFile>--> <!-- DEFAULT -->
+<!--                    <dataFile>${jacoco.execution.file}</dataFile>--> <!-- DEFAULT -->
+                    <output>file</output>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.90</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Uploads the unit testing report to Sonar -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${maven.sonar.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sonar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- This plugin compiles Scala files -->
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${maven.scala.version}</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <args>
+                                <arg>-dependencyfile</arg>
+                                <arg>${project.build.directory}/.scala_dependencies</arg>
+                            </args>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- enable scalatest plugin during build phase-->
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>${scalatest.maven.plugin}</version>
+<!--                <configuration>-->
+<!--                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>-->
+<!--                    <junitxml>.</junitxml>-->
+<!--                    <filereports>WDF TestSuite.txt</filereports>-->
+<!--                </configuration>-->
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Shade Plugin to create a fat jar-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!-- If the following is uncommented out then this project builds fine -->
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.scalactic:*</exclude>
+                                    <exclude>org.scalatest:*</exclude>
+                                    <exclude>org.apache.spark:*</exclude>
+                                </excludes>
+                            </artifactSet>
+
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.nexus.Hello</mainClass>
+                                </transformer>
+                            </transformers>
+
+                            <!-- FIX: http://zhentao-li.blogspot.com/2012/06/maven-shade-plugin-invalid-signature.html -->
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>**/logback.xml</exclude>
+                                        <exclude>**/log4j.properties</exclude>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

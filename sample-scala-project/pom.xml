@@ -18,7 +18,7 @@
         <scala.version>2.12.14</scala.version>
         <scala.major.version>2.12</scala.major.version>
         <!-- Logging Version -->
-        <logback.classic.version>1.4.7</logback.classic.version>
+        <logback.classic.version>1.4.12</logback.classic.version>
         <!-- Scalatest Version -->
         <scalatest.version>3.2.18</scalatest.version>
         <log4j.version>2.23.0</log4j.version>

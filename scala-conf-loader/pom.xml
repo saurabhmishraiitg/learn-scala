@@ -9,10 +9,9 @@
     <inceptionYear>2018</inceptionYear>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <encoding>UTF-8</encoding>
-        <scala.version>2.13.14</scala.version>
+        <scala.version>2.12.19</scala.version>
         <typesage.config.version>1.4.3</typesage.config.version>
     </properties>
 

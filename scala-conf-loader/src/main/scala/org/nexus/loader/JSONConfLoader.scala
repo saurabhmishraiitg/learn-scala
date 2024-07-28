@@ -12,7 +12,7 @@ import com.typesafe.config.ConfigFactory
   * ref : https://medium.com/@ramkarnani24/reading-configurations-in-scala-f987f839f54d
   */
 class JSONConfLoader(val configFileLoc: String = System.getenv("HOME") + "/nexus.conf",
-                     val parentHeader: String = " org.nexus") {
+                     val parentHeader: String = "org.nexus") {
 
   // Sample Config Structure
   /*  com.ram.batch {

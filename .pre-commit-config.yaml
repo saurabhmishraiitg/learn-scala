@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: check-case-conflict
+      - id: check-json
+        exclude: (sample-event.json|sample-looper-job-log.json)
+      - id: check-yaml
+      - id: check-xml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+        args: ["--assume-in-merge"]
+      - id: detect-private-key
+      - id: pretty-format-json
+        args: ["--autofix"]
+        exclude: (sample-event.json|sample-looper-job-log.json)
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: forbid-binary
+      - id: require-ascii
+      - id: script-must-have-extension
+      - id: shellcheck
+      - id: markdownlint
+        args: [-s, .markdownlint.rb]
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4 # Specify the desired version of Gitleaks
+    hooks:
+      - id: gitleaks

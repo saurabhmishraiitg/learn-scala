@@ -32,7 +32,7 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.13</version>
+      <version>1.5.6</version>
     </dependency>
 
     <!-- https://medium.com/airframe/airframe-log-a-modern-logging-library-for-scala-56fbc2f950bc -->

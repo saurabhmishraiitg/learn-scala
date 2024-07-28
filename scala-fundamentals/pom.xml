@@ -9,8 +9,8 @@
   <inceptionYear>2018</inceptionYear>
 
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
+<!--    <maven.compiler.target>1.8</maven.compiler.target>-->
     <encoding>UTF-8</encoding>
     <scala.version>2.13.14</scala.version>
   </properties>
@@ -25,8 +25,8 @@
     <!-- https://mvnrepository.com/artifact/com.typesafe.scala-logging/scala-logging -->
     <dependency>
       <groupId>com.typesafe.scala-logging</groupId>
-      <artifactId>scala-logging_2.11</artifactId>
-      <version>3.9.0</version>
+      <artifactId>scala-logging_2.13</artifactId>
+      <version>3.9.5</version>
     </dependency>
 
     <dependency>
@@ -39,8 +39,8 @@
     <!-- https://mvnrepository.com/artifact/org.wvlet.airframe/airframe-log -->
     <dependency>
       <groupId>org.wvlet.airframe</groupId>
-      <artifactId>airframe-log_2.11</artifactId>
-      <version>20.10.3</version>
+      <artifactId>airframe-log_2.13</artifactId>
+      <version>24.7.1</version>
     </dependency>
   </dependencies>
 

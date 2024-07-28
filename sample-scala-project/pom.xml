@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
     <artifactId>sample-scala-project</artifactId>
@@ -9,7 +10,6 @@
     <url>http://maven.apache.org</url>
     <properties>
         <productLines>gg</productLines>
-        <notifyEmail>saurabh.mishra@wxxx.com</notifyEmail>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.release>11</maven.compiler.release>
@@ -39,7 +39,7 @@
         <maven.sonar.plugin.version>3.9.1.2184</maven.sonar.plugin.version>
         <jacoco.coverage.ratio>0.80</jacoco.coverage.ratio>
         <!-- Sonar properties-->
-        <sonar.host.url>http://sonar.wal-mart.com</sonar.host.url>
+        <sonar.host.url>http://sonar.xxx-xxx.com</sonar.host.url>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.language>scala</sonar.language>
         <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
@@ -49,26 +49,7 @@
         <sonar.tests>src/test/scala</sonar.tests>
         <sonar.binaries>target/classes</sonar.binaries>
     </properties>
-    <scm>
-        <connection>scm:git:https://gecgithub01.wxxx.com/Datalake/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:https://gecgithub01.wxxx.com/Datalake/${project.artifactId}.git
-        </developerConnection>
-        <url>https://gecgithub01.wxxx.com/Datalake/${project.artifactId}.git</url>
-        <tag>HEAD</tag>
-    </scm>
-    <distributionManagement>
-        <!--Artifactory Repo-->
-        <repository>
-            <id>af-release</id>
-            <!--suppress UnresolvedMavenProperty -->
-            <url>${env.REPOSOLNS_MVN_REPO}</url>
-        </repository>
-        <snapshotRepository>
-            <id>af-snapshot</id>
-            <!--suppress UnresolvedMavenProperty -->
-            <url>${env.REPOSOLNS_MVN_REPO}</url>
-        </snapshotRepository>
-    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>

@@ -13,7 +13,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <encoding>UTF-8</encoding>
         <scala.version>2.13.14</scala.version>
-        <typesage.config.version>1.2.0</typesage.config.version>
+        <typesage.config.version>1.4.3</typesage.config.version>
     </properties>
 
     <dependencies>
@@ -39,7 +39,7 @@
                 <!-- see http://davidb.github.com/scala-maven-plugin -->
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>4.9.2</version>
                 <executions>
                     <execution>
                         <goals>

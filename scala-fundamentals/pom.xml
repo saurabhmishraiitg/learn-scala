@@ -40,7 +40,7 @@
     <dependency>
       <groupId>org.wvlet.airframe</groupId>
       <artifactId>airframe-log_2.11</artifactId>
-      <version>20.10.0</version>
+      <version>20.10.3</version>
     </dependency>
   </dependencies>
 
